@@ -23,14 +23,14 @@ class ObdLogger:
 
         self._connection = obd.OBD()
 
-        #if self._connection.status() != obd.OBDStatus.CAR_CONNECTED:
-        #    raise Exception("No connection")
+        if self._connection.status() != obd.OBDStatus.CAR_CONNECTED:
+            raise Exception("No connection")
 
     def read_record(self):
         current_record = dict()
         current_record['TIME_MS'] = round(time.time() * 1000)
-        #if self._connection.status() != obd.OBDStatus.CAR_CONNECTED:
-        #    raise Exception("No connection")
+        if self._connection.status() != obd.OBDStatus.CAR_CONNECTED:
+            raise Exception("No connection")
         for key, query in self._commands.items():
             if query is not None:
                 current_record[key] = self._connection.query(query)
