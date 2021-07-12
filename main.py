@@ -75,5 +75,5 @@ if __name__ == '__main__':
 
     args = parser.parse_args()
 
-    obd_logger = ObdLogger(create_filename(args.lpg), 500)
+    obd_logger = ObdLogger(create_filename(args.lpg), 250)
     obd_logger.star_logging()
